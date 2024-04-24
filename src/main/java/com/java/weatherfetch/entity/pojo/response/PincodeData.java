@@ -1,4 +1,4 @@
-package com.java.weatherfetch.entity.pojo;
+package com.java.weatherfetch.entity.pojo.response;
 
 
 import com.java.weatherfetch.entity.pojo.outbound.googleMaps.Location;
@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PincodeData implements Serializable {
 
-  private String originPincode;
+  private Integer originPincode;
   private Location originLocation;
-  private String destinationPincode;
+  private Integer destinationPincode;
   private Location destinationLocation;
 }

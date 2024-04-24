@@ -6,14 +6,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-@Configuration
 @Getter
 @Setter
+
+@Configuration
 @PropertySource("classpath:application-senstive.properties")
-@ConfigurationProperties(prefix = "weather.fetch.google.maps")
-public class GoogleMapsConfiguration {
+@ConfigurationProperties(prefix = "weather.fetch.open.weather")
+public class OpenWeatherConfiguration {
   private String base_url;
   private String api_key;
-
-
 }

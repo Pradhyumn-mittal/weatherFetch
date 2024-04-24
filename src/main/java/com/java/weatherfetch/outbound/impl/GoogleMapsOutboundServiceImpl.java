@@ -3,7 +3,8 @@ package com.java.weatherfetch.outbound.impl;
 import com.java.weatherfetch.configuration.GoogleMapsConfiguration;
 import com.java.weatherfetch.configuration.GoogleMapsEndpointService;
 import com.java.weatherfetch.entity.constant.enums.ResponseCode;
-import com.java.weatherfetch.entity.pojo.outbound.GoogleRouteResponse;
+import com.java.weatherfetch.entity.pojo.outbound.googleMaps.Location;
+import com.java.weatherfetch.entity.pojo.outbound.googleMaps.LocationResponse;
 import com.java.weatherfetch.outbound.api.GoogleMapsOutboundService;
 import java.io.IOException;
 import java.util.Objects;
@@ -22,27 +23,27 @@ public class GoogleMapsOutboundServiceImpl implements GoogleMapsOutboundService 
   private GoogleMapsEndpointService googleMapsEndpointService;
 
   @Override
-  public GoogleRouteResponse findRouteInfo(String origin, String destination)  {
-    Response<GoogleRouteResponse> response;
+  public LocationResponse findLocation(Integer pincode)  {
+    Response<LocationResponse> response;
     try {
-      response = googleMapsEndpointService.findRoutes(origin, destination,
-          googleMapsConfiguration.getApi_key(), false).execute();
+      response = googleMapsEndpointService.findLocation(pincode,
+          googleMapsConfiguration.getApi_key()).execute();
     }
     catch (IOException e)
     {
-      LOGGER.error("findRouteInfo unable to hit google api error {},origin:{} destination:{}",e.getMessage(),origin,destination);
+      LOGGER.error("findLocation unable to hit google api error {},pincode:{} ",e.getMessage(),pincode);
       throw new RuntimeException(ResponseCode.API_CALL_ERROR.getMessage());
       }
-      GoogleRouteResponse googleRouteResponse=response.body();
-    if (!response.isSuccessful() || Objects.isNull(googleRouteResponse)) {
-        LOGGER.error("findRouteInfo  Third party error origin:{}, destination:{} statusCode:{} error:{}",origin,destination,response.code(),response.errorBody());
+      LocationResponse locationResponse=response.body();
+    if (!response.isSuccessful() || Objects.isNull(locationResponse)) {
+        LOGGER.error("findLocation  Third party error pincode:{},statusCode:{} error:{}",pincode,response.code(),response.errorBody());
     }
-    else if(!"OK".equalsIgnoreCase(Objects.requireNonNull(googleRouteResponse.getStatus())))
+    else if(!"OK".equalsIgnoreCase(Objects.requireNonNull(locationResponse.getStatus())))
     {
-      LOGGER.error("findRouteInfo third party error origin:{}, destination:{} response:{}",origin,destination,googleRouteResponse.getStatus());
-      throw new RuntimeException(String.format("%s from googleMaps api",googleRouteResponse.getStatus()));
+      LOGGER.error("findLocation third party error pincode:{},response:{}",pincode,locationResponse.getStatus());
+      throw new RuntimeException(String.format("%s from googleMaps api",locationResponse.getStatus()));
 
     }
-    return googleRouteResponse;
+    return locationResponse;
     }
 }

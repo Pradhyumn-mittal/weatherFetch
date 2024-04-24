@@ -1,4 +1,4 @@
-package com.java.weatherfetch.entity.pojo.outbound;
+package com.java.weatherfetch.entity.pojo.outbound.openWeather;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Distance {
-  private String text;
-  private int value;
+public  class Weather {
+  private String main;
+  private String description;
 }
+

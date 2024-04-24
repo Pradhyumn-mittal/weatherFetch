@@ -1,10 +1,11 @@
 package com.java.weatherfetch.outbound.api;
 
-import com.java.weatherfetch.entity.pojo.outbound.GoogleRouteResponse;
+
+import com.java.weatherfetch.entity.pojo.outbound.googleMaps.LocationResponse;
 import java.io.IOException;
 
 public interface GoogleMapsOutboundService {
-    GoogleRouteResponse findRouteInfo(String origin,String destination) throws IOException;
+    LocationResponse findLocation(Integer pincode) throws IOException;
     
     
 }

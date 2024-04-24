@@ -21,4 +21,17 @@ public class RetrofitConfiguration {
   public GoogleMapsEndpointService googleMapsEndpointService(Retrofit retrofitGoogleMapsApi) {
     return retrofitGoogleMapsApi.create(GoogleMapsEndpointService.class);
   }
+  @Bean
+  public Retrofit retrofitOpenWeatherApi(OpenWeatherConfiguration openWeatherConfiguration) {
+    return new Retrofit.Builder()
+        .baseUrl(openWeatherConfiguration.getBase_url())
+        .addConverterFactory(GsonConverterFactory.create())
+        .build();
+  }
+
+  @Bean
+  public OpenWeatherEndpointService OpenWeatherEndpointService(Retrofit retrofitOpenWeatherApi) {
+    return retrofitOpenWeatherApi.create(OpenWeatherEndpointService.class);
+  }
+
 }

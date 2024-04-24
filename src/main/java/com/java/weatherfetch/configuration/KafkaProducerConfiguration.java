@@ -12,7 +12,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
 @Configuration
-@ConfigurationProperties(prefix = "spring.kafka")
+@ConfigurationProperties(prefix = "weather.fetch.kafka")
 public class KafkaProducerConfiguration {
   private String bootstrapServers;
   @Bean
@@ -36,6 +36,5 @@ public class KafkaProducerConfiguration {
   public void setBootstrapServers(String bootstrapServers) {
     this.bootstrapServers = bootstrapServers;
   }
-
 
 }

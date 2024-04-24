@@ -1,4 +1,4 @@
-package com.java.weatherfetch.entity.pojo.outbound;
+package com.java.weatherfetch.entity.pojo.outbound.googleMaps;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
-public class Duration {
-  private String text;
-  private int value;
+@Data
+public class Location {
+  private double lat;
+  private double lng;
 
 }

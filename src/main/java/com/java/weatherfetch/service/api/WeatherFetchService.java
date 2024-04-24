@@ -1,9 +1,10 @@
 package com.java.weatherfetch.service.api;
 
-import com.java.weatherfetch.entity.pojo.RouteResponse;
+import com.java.weatherfetch.entity.pojo.response.WeatherResponse;
 import java.io.IOException;
+import java.util.Date;
 
 public interface WeatherFetchService {
-    RouteResponse findRouteByPincode(Integer origin,Integer destination) throws IOException;
+    WeatherResponse getWeatherInfo(Integer pincode, Date date) throws IOException;
 
 }

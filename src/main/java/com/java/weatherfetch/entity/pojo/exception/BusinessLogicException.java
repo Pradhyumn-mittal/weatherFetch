@@ -1,6 +1,7 @@
 package com.java.weatherfetch.entity.pojo.exception;
 
-import com.java.pinMapper.entity.constant.enums.ResponseCode;
+
+import com.java.weatherfetch.entity.constant.enums.ResponseCode;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;

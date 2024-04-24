@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ErrorHandlerController {
   private static final Logger LOGGER = LoggerFactory.getLogger(ErrorHandlerController.class);
-  @ExceptionHandler(Exception.class)
+  @ExceptionHandler(IOException.class)
   @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
   public BaseResponse exception(IOException e) {
     List<String> errors = Arrays.asList(ExceptionUtils.getRootCauseStackTrace(e)).subList(0, 1);
@@ -30,6 +30,7 @@ public class ErrorHandlerController {
 
     return baseResponse;
   }
+
   @ExceptionHandler(RuntimeException.class)
   @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
   public BaseResponse runTimeException(RuntimeException e) {

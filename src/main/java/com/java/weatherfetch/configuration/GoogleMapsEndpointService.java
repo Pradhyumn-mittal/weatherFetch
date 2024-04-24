@@ -1,17 +1,15 @@
 package com.java.weatherfetch.configuration;
 
 
-import com.java.weatherfetch.entity.pojo.outbound.GoogleRouteResponse;
+import com.java.weatherfetch.entity.pojo.outbound.googleMaps.LocationResponse;
 import retrofit2.Call;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 
 public interface GoogleMapsEndpointService {
 
-  @POST("/maps/api/directions/json")
-  Call<GoogleRouteResponse> findRoutes(@Query("origin") String origin,
-      @Query("destination") String destination, @Query("key") String key,
-      @Query("alternatives") Boolean alternatives);
+  @GET("/maps/api/geocode/json")
+  Call<LocationResponse> findLocation(@Query("address") Integer address, @Query("key") String key);
 
 }

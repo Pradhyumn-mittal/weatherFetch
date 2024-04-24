@@ -3,7 +3,7 @@ package com.java.weatherfetch.entity.dao;
 
 import com.java.weatherfetch.entity.constant.CollectionName;
 import com.java.weatherfetch.entity.constant.fields.PincodeDetailFields;
-import com.java.weatherfetch.entity.pojo.outbound.Location;
+import com.java.weatherfetch.entity.pojo.outbound.googleMaps.Location;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
