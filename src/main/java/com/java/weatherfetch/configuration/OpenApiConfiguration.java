@@ -32,9 +32,9 @@ public class OpenApiConfiguration {
 
     Info info = new Info()
         .contact(contact)
-        .description("Simplifying pin-to-pin distance queries with Google Maps integration and efficient caching")
-        .summary("Swagger for Pinmapper Backend API")
-        .title("PinMapper")
+        .description("Instant source for pinpoint weather data, delivering accurate forecasts based on pin code and date input, with optimized API calls and seamless database integration.")
+        .summary("Swagger for WeatherFetch Backend API")
+        .title("WeatherFetch")
         .version("V1.0.0")
         .license(new License().name("Apache 2.0").url("http://springdoc.org"));
 
