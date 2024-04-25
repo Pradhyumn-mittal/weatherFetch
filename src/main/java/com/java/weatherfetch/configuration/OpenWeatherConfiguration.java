@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 @Setter
 
 @Configuration
-@PropertySource("classpath:application-senstive.properties")
+@PropertySource("classpath:application.properties")
 @ConfigurationProperties(prefix = "weather.fetch.open.weather")
 public class OpenWeatherConfiguration {
   private String base_url;

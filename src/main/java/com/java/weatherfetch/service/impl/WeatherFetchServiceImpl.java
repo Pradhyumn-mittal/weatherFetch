@@ -23,6 +23,7 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -38,6 +39,8 @@ public class WeatherFetchServiceImpl implements WeatherFetchService {
   private OpenWeatherOutboundService openWeatherOutboundService;
   @Autowired
   private WeatherDetailRepository weatherDetailRepository;
+  @Value("${weather.fetch.cache.expiry}")
+  private Long cacheExpiry;
 
 
   private Completable saveData(WeatherResponse response) {
@@ -93,7 +96,8 @@ public class WeatherFetchServiceImpl implements WeatherFetchService {
     WeatherDetail weatherDetail =weatherDetailRepository.findWeatherDetailByPincodeAndDate(pincode,date);
     if(Objects.nonNull(weatherDetail))
     {weatherResponse= mapWeatherDetail(weatherDetail);
-      cacheService.createCache(cacheKey,weatherResponse,3600);
+      cacheService.createCache(cacheKey,weatherResponse,cacheExpiry);
+      return weatherResponse;
     }
     PincodeDetail pincodeDetail=pincodeDetailRepository.findPincodeDetailByPincode(pincode);
     Location coordinates;
@@ -108,7 +112,7 @@ public class WeatherFetchServiceImpl implements WeatherFetchService {
         }
     OpenWeatherResponse openWeatherResponse=openWeatherOutboundService.getWeatherData(coordinates,date);
      weatherResponse = convertToWeatherResponse(pincode,openWeatherResponse);
-    cacheService.createCache(cacheKey,weatherResponse,3600);
+    cacheService.createCache(cacheKey,weatherResponse,cacheExpiry);
      saveData(weatherResponse).subscribe();
     return weatherResponse;
   }

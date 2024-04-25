@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @Getter
 @Setter
-@PropertySource("classpath:application-senstive.properties")
+@PropertySource("classpath:application.properties")
 @ConfigurationProperties(prefix = "weather.fetch.google.maps")
 public class GoogleMapsConfiguration {
   private String base_url;

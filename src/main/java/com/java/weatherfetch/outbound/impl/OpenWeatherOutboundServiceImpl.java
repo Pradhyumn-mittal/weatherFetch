@@ -28,7 +28,6 @@ public class OpenWeatherOutboundServiceImpl implements OpenWeatherOutboundServic
   public OpenWeatherResponse getWeatherData(Location location, Date date) {
     Response<OpenWeatherResponse> response;
     Long epochDate=date.getTime()/1000;
-    System.out.println(epochDate+" + "+ location.getLng()+"  +  "+ location.getLat());
     try {
       response = openWeatherEndpointService.getWeather(location.getLat(), location.getLng(),
           epochDate, openWeatherConfiguration.getApi_key()).execute();

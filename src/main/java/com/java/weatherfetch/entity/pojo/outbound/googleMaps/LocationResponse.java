@@ -1,7 +1,11 @@
 package com.java.weatherfetch.entity.pojo.outbound.googleMaps;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
+import lombok.Data;
 
+@Builder
+@Data
 public class LocationResponse {
   @SerializedName("results")
   private Result[] results;
@@ -24,7 +28,8 @@ public class LocationResponse {
   public void setStatus(String status) {
     this.status = status;
   }
-
+  @Builder
+  @Data
   public static class Result {
     @SerializedName("geometry")
     private Geometry geometry;
@@ -33,7 +38,8 @@ public class LocationResponse {
       return geometry;
     }
   }
-
+  @Builder
+  @Data
   public static class Geometry {
     @SerializedName("location")
     private Location location;
