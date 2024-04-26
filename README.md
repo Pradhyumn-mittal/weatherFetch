@@ -45,7 +45,7 @@ Welcome to WeatherFetch - your ultimate solution for fetching weather informatio
    java -jar target/weather-fetch-0.0.1-SNAPSHOT.jar
    ```
 
-6. **Access Swagger documentation**: Open your browser and navigate to [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
+6. **Access Swagger documentation**: Open your browser and navigate to http://localhost:8081/swagger-ui/index.html#.
 
 ## Kafka Consumer
 
